@@ -1,0 +1,82 @@
+Since xyz.com launched the Destination Finder, Mariana and Pedro started using it to look for new places all over the world where they can travel and enjoy as many of their collective passions as possible. Can you help groups of guests like Mariana and Pedro find some hidden gems?
+
+For this challenge, we'll provide you with the following:
+
+    A list of guests and, for each guest, a list of their respective passions.
+    A list of destinations and, for each destination, a list of passions that the destination is known to be good for.
+
+Given the data above, find the two destinations satisfying the maximum number of the group's collective passions and print them as two space-separated strings on a single line. If more than one destination satisfies a maximum number of passions, then choose the pair of such destinations having the shortest distance between them. Use the Law of Cosines for Spherical Trigonometry to calculate distances, as demonstrated by the following pseudocode:
+
+function distance_between(point1, point2) {
+    var EARTH_RADIUS = 6371;//in km
+    var point1_lat_in_radians  = degree2radians( point1.latitude );
+    var point2_lat_in_radians  = degree2radians( point2.latitude );
+    var point1_long_in_radians  = degree2radians( point1.longitude );
+    var point2_long_in_radians  = degree2radians( point2.longitude );
+
+    return acos( sin( point1_lat_in_radians ) * sin( point2_lat_in_radians ) +
+                 cos( point1_lat_in_radians ) * cos( point2_lat_in_radians ) *
+                 cos( point2_long_in_radians - point1_long_in_radians) ) * EARTH_RADIUS;
+}
+
+Input Format
+
+The first line contains a single integer, , denoting the number of guests traveling together.
+Each line of the subsequent lines lists guest 's passions as a sequence of space-separated values:
+
+    The first value is an integer, , denoting the number of passions that the guest has.
+    Each of the subsequent space-separated strings describes one of the guest's passions.
+
+The next line contains a single integer, , denoting the number of potential destinations.
+Each line of the subsequent lines describes destination as a single line of space-separated values:
+
+    The first value is a string denoting the destination name.
+    The second value is a floating-point number denoting the destination's latitude.
+    The third value is a floating-point number denoting the destination's longitude.
+    The fourth value is an integer, , denoting the number of passions available at the destination.
+    Each of the subsequent space-separated strings describes a passion available at the destination.
+
+Constraints
+
+    Assume the value of pi is
+
+Output Format
+
+Print a single line with space-separated destination names that cover the largest number of passions held by the group. These destinations must be ordered alphabetically; if two or more pairs of destinations cover the same number of passions, choose the pair having the shortest distance between cities.
+
+
+Sample Input
+
+2
+3 surfing yoga walking
+3 wine relaxation beach
+3
+amsterdam 52.374030 4.889690 4 museums canals nightlife walking
+sagres 37.129665 -8.669586 3 beach surfing relaxation
+biarritz 43.480120 -1.555580 6 surfing nightlife beach food wine walking
+
+Sample Output
+
+biarritz sagres
+
+
+Explanation
+
+There are two guests having the following passions:
+
+    Guest : surfing, yoga, and walking.
+    Guest : wine, relaxation, and beach.
+
+There are three possible vacation destinations (passions appealing to the above guests are highlighted for emphasis):
+
+    amsterdam: museums, canals, nightlife, and walking.
+    sagres: beach, surfing, and relaxation.
+    biarritz: surfing, nightlife, beach, food, wine, and walking.
+
+There are three possible vacations:
+
+    amsterdam and sagres: This trip satisfies 4 distinct guest passions (i.e., surfing, beach, relaxation, and walking).
+    amsterdam and biarritz: This trip satisfies 4 distinct guest passions (i.e., walking, surfing, beach, wine).
+    sagres and biarritz: This trip satisfies 5 distinct guest passions (i.e., beach, surfing, relaxation, wine, walking).
+
+Because the sagres-biarritz vacation satisfies the maximum number of passions, we print biarritz and sagres as two alphabetically-ordered space-separated values on a new line.
