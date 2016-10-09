@@ -22,28 +22,6 @@ public class GuestPassionDestinationServiceTest {
 	public void setUp() throws Exception {
 	}
 
-/*	@Test
-	public void should_returnMatchingDestinations_for_singleGuestPassion() {
-		//amsterdam 52.55 4.89 3 beach walking wine
-		Set<String> destinationNames = new TreeSet<>();
-		destinationNames.add("amsterdam");
-		Set<String> availablePassions = new TreeSet<>();
-		availablePassions.add("beach");availablePassions.add("walking");
-		availablePassions.add("wine");
-		DestinationDetail destinationDetail = new DestinationDetail("amsterdam", 52.55f, 4.89f, 3,availablePassions);
-		Set<DestinationDetail> expectedDestinations = new TreeSet<>(); expectedDestinations.add(destinationDetail);
-		Set<String> guestPassion = new TreeSet<>();guestPassion.add("walking");
-		GuestPassionDetail guestPassionDetail = new GuestPassionDetail(1, guestPassion);
-		GuestPassionDestinationService guestPassionDestinationService =new GuestPassionDestinationService();
-		Set<DestinationDetail> destinationDetails = new TreeSet<>();
-		destinationDetails.add(destinationDetail);
-		
-		Set<GuestPassionDetail> guestPassionDetails = new HashSet<>();
-		guestPassionDetails.add(guestPassionDetail);
-		List<DestinationDetail> matchedDestinationNames = guestPassionDestinationService.findMatchingDestinations(guestPassionDetails,destinationDetails);
-		assertEquals(expectedDestinations, matchedDestinationNames);
-		
-	}*/
 	
 	@Test
 	public void should_returnTrip_for_MatchingMaximumPassionsOfGuests() {
