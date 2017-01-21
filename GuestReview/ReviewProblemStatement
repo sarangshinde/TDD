@@ -1,0 +1,61 @@
+Guest reviews are an important part of helping travelers choose destinations that satisfy their passions. Each guest review consists of a reviewer ID (), Unix time timestamp denoting the date of the review (), and a string of body text ().
+
+To help determine which reviewers are experts on a specific passion, we want to score each reviewer for their reviews mentioning that passion. A reviewer's score for a single, specific passion is calculated as follows:
+
+    Review Date:
+	Reviews having a timestamp, , in the inclusive range between June , 15th ,2016,12:00AM and July 15th ,2016,12:00AM(GMT) are awarded points.
+
+       Reviews written outside of the aforementioned time range (i.e., before or after) are awarded points 10.
+
+Review Length: 
+    A review body,b having 100 or more characters is awarded 20 points.
+    A review having less than 100 characters is awarded 10 points.
+
+    If a reviewer has more than one review mentioning a specific passion, their expertise score for that passion is the sum of the scores for all their reviews mentioning that specific passion.
+
+Determining the foremost expert reviewer with regard to a specific passion:
+
+    Score Each Reviewer. Note that a reviewer ID may have multiple reviews associated with it and a reviewer's expertise score for a passion is the sum of the scores for all their reviews mentioning that passion.
+    Breaking Ties. If two reviewer IDs have the same expertise score for a passion, choose the reviewer with the smaller ID.
+
+Given a set of reviews and a list of passions, go through each passion (in order) and print the reviewer ID (r) for the reviewer having the highest expertise score for that passion on a new line. If no reviewers mentioned a specific passion, print -1 instead.
+
+Input Format
+
+The first line contains two positive space-separated integers denoting the respective values of n (the number of passions) and m (the number of reviews).
+Each line i of the n subsequent lines contains a single word describing passion i.
+The 2m subsequent lines describe each of the m reviews over two lines:
+
+    The first line contains two space-separated integers describing the respective values of r (the reviewer ID) and t (the review's Unix time timestamp in seconds).
+    The second line contains a string of text denoting the value of b (the review's body).
+
+Constraints
+	
+    String b will contain a maximum of 5000 characters.
+
+
+Output Format
+
+Print n lines of output. Each line i must contain a single integer denoting the reviewer ID (r) of the expert for the ith passion received as input; if no reviewers mentioned that specific passion, print -1 instead.
+
+Sample Input
+
+3 4
+Skating
+Food
+Climbing
+1 1467720000
+Skating is good in Austria
+22 1464782400
+I loved the Spanish food, it had so many varieties and it was super super delicious. The price was a little bit high but it was worth it. People who don't like spicy food might need to think twice as it could be a little bit problematic for them.
+4 1467720000
+I didn’t like the Indian food!
+50  1467720000
+People were really friendly, I enjoyed being there.
+
+Sample Output
+
+1
+4
+-1
+
